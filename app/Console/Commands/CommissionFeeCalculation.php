@@ -20,7 +20,6 @@ class CommissionFeeCalculation extends Command
 
     protected array $userDetailsForWeek = [];
 
-    protected array $test = [];
     /**
      * The console command description.
      *
@@ -63,7 +62,7 @@ class CommissionFeeCalculation extends Command
         foreach ($data as $item) {
             switch ($item['transactionType']) {
                 case "deposit":
-                    $this->info($this->depositeService->depositeCalculation($item, $depositeCommissionFee, $this->test));
+                    $this->info($this->depositeService->depositeCalculation($item, $depositeCommissionFee));
                     break;
                 case "withdraw":
                     $this->info(

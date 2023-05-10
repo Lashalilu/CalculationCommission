@@ -11,7 +11,7 @@ class  DepositeService
     {
     }
 
-    public function depositeCalculation($item, $depositeCommissionFee, &$test): float
+    public function depositeCalculation($item, $depositeCommissionFee): float
     {
         $test [] = 'lasha';
         return $this->currencyService->eurToNeededCurrency(
