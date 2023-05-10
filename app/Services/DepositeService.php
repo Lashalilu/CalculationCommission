@@ -5,7 +5,7 @@ namespace App\Services;
 
 class  DepositeService
 {
-    public function depositeCalculation($data): float
+    public function depositeCalculation($data,$depositeCommissionFee): float
     {
         return $data['amount'] * 0.0003;
     }
