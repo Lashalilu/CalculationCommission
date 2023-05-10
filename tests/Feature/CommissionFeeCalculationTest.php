@@ -13,22 +13,6 @@ use Mockery;
 
 class CommissionFeeCalculationTest extends TestCase
 {
-    public function testCurrency()
-    {
-        $data = [
-            'date' => 2014 - 12 - 31,
-            'userId' => 4,
-            'userType' => 'private',
-            'transactionType' => 'withdraw',
-            'amount' => 1200.00,
-            'currency' => "EUR"
-        ];
-        $command = new CommissionFeeCalculation();
-
-        $this->assertIsFloat($command->convertCurrency($data['amount'], $data['currency']));
-
-    }
-
     public function testCommission()
     {
         Storage::shouldReceive('path')->with('public/input.csv')->andReturn('public/input.csv');

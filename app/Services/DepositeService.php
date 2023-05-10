@@ -3,31 +3,19 @@
 namespace App\Services;
 
 
+use Illuminate\Support\Facades\Http;
+
 class  DepositeService
 {
-    public function depositeCalculation($data,$depositeCommissionFee): float
+    public function __construct(protected CurrencyService $currencyService)
     {
-        return $data['amount'] * 0.0003;
+    }
+
+    public function depositeCalculation($item, $depositeCommissionFee, &$test): float
+    {
+        $test [] = 'lasha';
+        return $this->currencyService->eurToNeededCurrency(
+            sprintf('%0.2f', $item['amount'] * $depositeCommissionFee)
+            , $item['currency']);
     }
 }
-
-//$weekOperation['totalAmount'] += $amountInEur;
-//
-//if ($weekOperation['totalAmount'] > 1000) {
-//    $chargeAmount = ($weekOperation['totalAmount'] - 1000);
-//
-//    if (!$isEuro) {
-//        $chargeAmount = $exchangeRateService->convertFromEur(
-//            $chargeAmount,
-//            $exchangeRates[$currency]
-//        );
-//    }
-//} else {
-//    $chargeAmount = 0;
-//}
-//}
-//
-//$weekOperation['operationCount']++;
-//
-//$userWithdraws[$userId]['operationDates'][$startOfWeek] = $weekOperation;
-//}
